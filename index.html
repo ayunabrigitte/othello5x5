@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ocean Othello 5×5｜黑白棋 — 林元薇 412043</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════════════ OCEAN BACKGROUND ══════════════════ -->
+<div class="ocean-bg" aria-hidden="true">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="bubbles-container"></div>
+
+  <div class="light-ray" style="left:10%; animation-duration:6s;"></div>
+  <div class="light-ray" style="left:22%; animation-duration:8s; animation-delay:-2s; width:2px;"></div>
+  <div class="light-ray" style="left:38%; animation-duration:7s; animation-delay:-4s;"></div>
+  <div class="light-ray" style="left:55%; animation-duration:9s; animation-delay:-1s; width:4px;"></div>
+  <div class="light-ray" style="left:70%; animation-duration:6.5s; animation-delay:-5s; width:2px;"></div>
+  <div class="light-ray" style="left:85%; animation-duration:8.5s; animation-delay:-3s;"></div>
+
+  <div class="sand-bottom"></div>
+</div>
+
+<!-- ══════════════════ FLOATING DOLPHINS ══════════════════ -->
+<svg class="dolphin-svg dolphin-1" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a9fd4"/>
+      <stop offset="100%" stop-color="#1a5fa8"/>
+    </linearGradient>
+    <linearGradient id="dg1b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4eef9"/>
+      <stop offset="100%" stop-color="#9cd4ee"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="95" cy="52" rx="78" ry="24" fill="url(#dg1)" transform="rotate(-8 95 52)"/>
+  <ellipse cx="95" cy="58" rx="55" ry="14" fill="url(#dg1b)" transform="rotate(-8 95 58)"/>
+  <path d="M168 45 C180 30 195 20 198 32 C196 38 185 40 188 52 C190 60 180 65 168 55 Z" fill="url(#dg1)"/>
+  <path d="M108 28 C115 10 128 8 130 22 C128 26 118 28 108 28 Z" fill="url(#dg1)"/>
+  <path d="M70 62 C60 75 45 80 42 68 C45 60 60 58 70 62 Z" fill="#2d7db5"/>
+  <ellipse cx="24" cy="50" rx="22" ry="16" fill="url(#dg1)" transform="rotate(-8 24 50)"/>
+  <path d="M10 52 C2 50 -4 46 2 42 C10 40 20 44 18 52 Z" fill="url(#dg1)"/>
+  <circle cx="14" cy="46" r="3.5" fill="#0a1f3c"/>
+  <circle cx="15" cy="45" r="1.2" fill="white" opacity="0.8"/>
+  <path d="M5 50 Q10 54 15 50" stroke="#0a1f3c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
+
+<svg class="dolphin-svg dolphin-2" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5ab8e0"/>
+      <stop offset="100%" stop-color="#1a6bb0"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="78" cy="42" rx="62" ry="18" fill="url(#dg2)" transform="rotate(5 78 42)"/>
+  <ellipse cx="78" cy="46" rx="44" ry="10" fill="#c8e8f5" transform="rotate(5 78 46)"/>
+  <path d="M136 36 C148 22 158 14 160 24 C158 30 149 32 150 42 C151 50 142 54 134 44 Z" fill="url(#dg2)"/>
+  <path d="M88 22 C94 6 106 4 108 16 C106 20 96 22 88 22 Z" fill="url(#dg2)"/>
+  <path d="M56 50 C46 60 34 64 32 54 C35 47 48 46 56 50 Z" fill="#2580c0"/>
+  <ellipse cx="20" cy="40" rx="18" ry="13" fill="url(#dg2)" transform="rotate(5 20 40)"/>
+  <path d="M8 42 C1 40 -3 36 2 32 C8 30 16 34 14 42 Z" fill="url(#dg2)"/>
+  <circle cx="12" cy="37" r="2.8" fill="#0a1f3c"/>
+  <circle cx="13" cy="36" r="1" fill="white" opacity="0.8"/>
+  <path d="M4 40 Q8 43 12 40" stroke="#0a1f3c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+</svg>
+
+<!-- ══════════════════ FLOATING STARFISH ══════════════════ -->
+<svg class="starfish" style="width:55px; top:8%; left:5%; animation-duration:6s,18s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#f4a020" stroke="#d4800a" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#f8c060"/>
+</svg>
+<svg class="starfish" style="width:40px; top:15%; right:7%; animation-duration:8s,22s; animation-delay:-3s,-8s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#e85c20" stroke="#b83c10" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#f4804a"/>
+</svg>
+<svg class="starfish" style="width:48px; top:42%; left:2%; animation-duration:7s,20s; animation-delay:-5s,-12s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#f8a040" stroke="#c87010" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#fcc870"/>
+</svg>
+<svg class="starfish" style="width:36px; top:38%; right:4%; animation-duration:9s,25s; animation-delay:-2s,-6s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#e04010" stroke="#a82800" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#f07040"/>
+</svg>
+<svg class="starfish" style="width:44px; top:72%; left:3%; animation-duration:5s,16s; animation-delay:-1s,-10s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#fbb030" stroke="#c87800" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#fdd060"/>
+</svg>
+<svg class="starfish" style="width:50px; top:75%; right:3%; animation-duration:10s,28s; animation-delay:-7s,-4s;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#e86820" stroke="#b84008" stroke-width="1.5"/>
+  <circle cx="30" cy="30" r="7" fill="#f49050"/>
+</svg>
+
+<!-- ══════════════════ PAGE CONTENT ══════════════════ -->
+<div class="page-wrapper">
+
+  <!-- ── NAMEPLATE ── -->
+  <div class="nameplate">
+    <div class="eyebrow">電資一甲　Department of Electrical &amp; Computer Engineering</div>
+    <div class="student-name">林　元　薇</div>
+    <div class="student-info">學號 412043　　電資一甲</div>
+  </div>
+
+  <!-- ── GAME TITLE ── -->
+  <h1 class="game-title">🌊 Ocean Othello 5×5</h1>
+  <p class="game-subtitle">黑白棋 · Ocean Edition · 5×5 迷你版</p>
+
+  <!-- ── MODE SELECTOR ── -->
+  <div class="mode-panel">
+    <span class="mode-label">模式</span>
+    <button class="mode-btn active" data-mode="pvp">👥 雙人對戰</button>
+    <button class="mode-btn" data-mode="ai">🤖 對戰 AI</button>
+    <span id="diff-row" style="display:none; align-items:center; gap:8px;">
+      <span class="mode-label">難度</span>
+      <select class="diff-select" id="diff-select">
+        <option value="easy">🐠 簡單</option>
+        <option value="medium" selected>🐡 中等</option>
+        <option value="hard">🦈 困難</option>
+      </select>
+    </span>
+  </div>
+
+  <!-- ── SETTINGS ── -->
+  <div class="settings-row">
+    <label class="toggle-label" for="hint-toggle">
+      💡 顯示提示
+      <div class="toggle-switch on" id="hint-toggle"></div>
+    </label>
+  </div>
+
+  <!-- ── SCOREBOARD ── -->
+  <div class="scoreboard">
+    <div class="score-card black-card active-turn" id="card-black">
+      <div class="score-turn-badge">YOUR TURN</div>
+      <div class="score-player-disc black-disc-icon"></div>
+      <div class="score-label">黑棋</div>
+      <div class="score-number" id="score-black">2</div>
+    </div>
+    <div class="vs-divider">VS</div>
+    <div class="score-card white-card" id="card-white">
+      <div class="score-turn-badge">YOUR TURN</div>
+      <div class="score-player-disc white-disc-icon"></div>
+      <div class="score-label">白棋</div>
+      <div class="score-number" id="score-white">2</div>
+    </div>
+  </div>
+
+  <!-- ── STATUS BAR ── -->
+  <div class="status-bar">
+    <span class="status-msg" id="status-msg">⚫ 黑棋 的回合 — 請落子</span>
+  </div>
+
+  <!-- ── BOARD SIZE BADGE ── -->
+  <div class="board-badge">5 × 5 迷你棋盤</div>
+
+  <!-- ── GAME BOARD ── -->
+  <div class="board-container">
+    <div class="sand-frame">
+      <div class="sand-ripple top"></div>
+
+      <!-- Corner starfish -->
+      <svg class="board-starfish" style="width:26px; top:-4px; left:-4px;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#e88020" stroke="#b85800" stroke-width="2"/>
+        <circle cx="30" cy="30" r="7" fill="#fca848"/>
+      </svg>
+      <svg class="board-starfish" style="width:22px; top:-4px; right:-4px;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#f4a020" stroke="#c07800" stroke-width="2"/>
+        <circle cx="30" cy="30" r="7" fill="#fcc050"/>
+      </svg>
+      <svg class="board-starfish" style="width:24px; bottom:-4px; left:-4px;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#e06018" stroke="#a83800" stroke-width="2"/>
+        <circle cx="30" cy="30" r="7" fill="#f08840"/>
+      </svg>
+      <svg class="board-starfish" style="width:20px; bottom:-4px; right:-4px;" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,2 36,22 56,22 40,35 46,56 30,43 14,56 20,35 4,22 24,22" fill="#fbb030" stroke="#c88000" stroke-width="2"/>
+        <circle cx="30" cy="30" r="7" fill="#fdd060"/>
+      </svg>
+
+      <div id="board"></div>
+      <div class="sand-ripple bottom"></div>
+    </div>
+  </div>
+
+  <!-- ── CONTROLS ── -->
+  <div class="controls">
+    <button class="btn btn-primary" id="btn-new">🔄 新遊戲</button>
+    <button class="btn btn-secondary" id="btn-undo">↩ 悔棋</button>
+  </div>
+
+  <!-- ── MOVE LOG ── -->
+  <div class="move-log-panel">
+    <div class="move-log-title">📜 落子紀錄</div>
+    <div class="move-log-entries" id="log-entries"></div>
+  </div>
+
+</div><!-- /page-wrapper -->
+
+<!-- ══════════════════ WIN MODAL ══════════════════ -->
+<div class="modal-overlay" id="win-modal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <span class="modal-trophy">🏆</span>
+    <div class="modal-title" id="modal-title">黑棋勝利！</div>
+    <div class="modal-subtitle" id="modal-subtitle">恭喜獲勝</div>
+    <div class="modal-scores">
+      <div class="modal-score-item">
+        <div class="modal-score-disc black-disc-icon"></div>
+        <div class="modal-score-num" id="modal-black">0</div>
+        <div class="modal-score-lbl">黑棋</div>
+      </div>
+      <div class="modal-score-item">
+        <div class="modal-score-disc white-disc-icon"></div>
+        <div class="modal-score-num" id="modal-white">0</div>
+        <div class="modal-score-lbl">白棋</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-gold" id="btn-new-from-modal">🔄 再玩一局</button>
+      <button class="btn btn-secondary" id="btn-close-modal">✕ 關閉</button>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
